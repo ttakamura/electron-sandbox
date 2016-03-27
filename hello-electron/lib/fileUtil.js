@@ -3,8 +3,8 @@
 var glob = require('glob');
 
 var fileUtil = {
-    readmeList: function (callback){
-        glob('node_modules/**/README.md', function (err, matches){
+    readmeList: function (baseDir, callback){
+        glob('node_modules/**/README.md', {cwd: baseDir}, function (err, matches){
             if (err){
                 callback(err, nil);
             }else{

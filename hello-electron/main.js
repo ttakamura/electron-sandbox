@@ -31,9 +31,50 @@ function createWindow () {
     });
 }
 
+function openWindow (baseDir) {
+    var win = new BrowserWindow({width: 900, height: 900});
+    win.loadUrl('file://' + __dirname + '/index.html?baseDir=' + encodeURIComponent(baseDir));
+    win.webContents.openDevTools();
+    win.on('closed', function () {
+        win = null;
+    });
+}
+
+var menuTemplate = [
+    {
+        label: 'HelloElectron',
+        submenu: [
+            {label: 'Go Quit', accelerator: 'Command+Q', click: function(){app.quit();}}
+        ]
+    }, {
+        label: 'File',
+        submenu: [
+            {label: 'Open', accelerator: 'Command+O', click: function() {
+                // 「ファイルを開く」ダイアログの呼び出し
+                require('dialog').showOpenDialog({ properties: ['openDirectory']}, function (baseDir){
+                    if(baseDir && baseDir[0]) {
+                        openWindow(baseDir[0]);
+                    }
+                });
+            }}
+        ]
+    }, {
+        label: 'View',
+        submenu: [
+            { label: 'Reload', accelerator: 'Command+R', click: function() { BrowserWindow.getFocusedWindow().reloadIgnoringCache(); } },
+            { label: 'Toggle DevTools', accelerator: 'Alt+Command+I', click: function() { BrowserWindow.getFocusedWindow().toggleDevTools(); } }
+        ]
+    }
+];
+var menu = Menu.buildFromTemplate(menuTemplate);
+
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
-app.on('ready', createWindow);
+app.on('ready', function(){
+    Menu.setApplicationMenu(menu);
+
+    createWindow();
+});
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
