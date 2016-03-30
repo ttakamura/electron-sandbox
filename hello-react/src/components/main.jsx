@@ -6,7 +6,7 @@ export class Main extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      message: "Hello electron"
+      message: `Hello This is ReactComponent!! ${Date()}`
     };
   }
   render() {

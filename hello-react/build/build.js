@@ -56,22 +56,22 @@
 
 	__webpack_require__(2);
 
-	var _babelRegister = __webpack_require__(292);
-
-	var _babelRegister2 = _interopRequireDefault(_babelRegister);
-
 	var _react = __webpack_require__(293);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(450);
 
 	var _main = __webpack_require__(449);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	(0, _babelRegister2.default)();
+	console.log("Hello react from bootstrap");
 
+	//import babelRegister from 'babel-register';
+	//babelRegister();
 
-	_react2.default.render(_react2.default.createElement(_main.Main), document.getElementById('app'));
+	(0, _reactDom.render)(_react2.default.createElement(_main.Main), document.getElementById('app'));
 
 /***/ },
 /* 2 */
@@ -7778,20 +7778,7 @@
 	};
 
 /***/ },
-/* 292 */
-/***/ function(module, exports) {
-
-	// required to safely use babel/register within a browserify codebase
-
-	"use strict";
-
-	exports.__esModule = true;
-
-	exports["default"] = function () {};
-
-	module.exports = exports["default"];
-
-/***/ },
+/* 292 */,
 /* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27324,7 +27311,7 @@
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
 
 	    _this.state = {
-	      message: "Hello electron"
+	      message: 'Hello This is ReactComponent!! ' + Date()
 	    };
 	    return _this;
 	  }
@@ -27350,6 +27337,15 @@
 
 	  return Main;
 	}(_react2.default.Component);
+
+/***/ },
+/* 450 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(295);
+
 
 /***/ }
 /******/ ]);
