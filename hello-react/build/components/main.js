@@ -22,10 +22,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Main = exports.Main = function (_React$Component) {
   _inherits(Main, _React$Component);
 
-  function Main() {
+  function Main(props) {
     _classCallCheck(this, Main);
 
-    return _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this));
+    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Main).call(this, props));
+
+    _this.state = {
+      message: "Hello electron"
+    };
+    return _this;
   }
 
   _createClass(Main, [{

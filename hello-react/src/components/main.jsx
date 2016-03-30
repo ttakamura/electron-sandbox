@@ -3,8 +3,11 @@
 import React from 'react';
 
 export class Main extends React.Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
+    this.state = {
+      message: "Hello electron"
+    };
   }
   render() {
     return (

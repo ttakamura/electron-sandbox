@@ -1,6 +1,8 @@
 'use strict';
 
-import polyfill from 'babel/polyfill';
+import 'babel-polyfill';
+import babelRegister from 'babel-register';
+babelRegister();
 import React from 'react';
 import {Main} from './components/main';
 
