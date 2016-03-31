@@ -6,6 +6,9 @@ const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
+// for Livereload
+var client = require('electron-connect').client;
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
@@ -27,6 +30,8 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null;
   });
+
+  client.create(mainWindow);
 }
 
 // This method will be called when Electron has finished
@@ -49,3 +54,5 @@ app.on('activate', function () {
     createWindow();
   }
 });
+
+// 3
